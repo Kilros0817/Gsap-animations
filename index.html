@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP ScrollTrigger demo</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <section class="section pin-section">
+      <div class="content content--twin">
+        <div class="twin__cols">
+          <div class="twin__panel twin__panel--left">
+            <div class="slide-counter" aria-live="polite">
+              <span class="slide-counter__current">01</span>
+              <span class="slide-counter__sep"> — </span>
+              <span class="slide-counter__total">04</span>
+            </div>
+            <div class="twin__slides">
+              <div class="slide center gradient-green">
+                <h1>SLIDE ONE</h1>
+              </div>
+              <div class="slide center gradient-blue">
+                <h1>SLIDE TWO</h1>
+              </div>
+              <div class="slide center gradient-purple">
+                <h1>SLIDE THREE</h1>
+              </div>
+              <div class="slide center gradient-orange">
+                <h1>SLIDE FOUR</h1>
+              </div>
+            </div>
+
+            <nav class="scroll-progress" aria-label="Slide progress">
+              <div class="scroll-progress__matrix">
+                <div class="scroll-progress__track-row">
+                  <div class="scroll-progress__track" aria-hidden="true"></div>
+                  <div class="scroll-progress__highlight"></div>
+                </div>
+                <ul class="list scroll-progress__labels">
+                  <li>Квалифицированный персонал</li>
+                  <li>Медицинские услуги</li>
+                  <li>Комфорт и досуг</li>
+                  <li>Безопасность</li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+
+          <div class="twin__panel twin__panel--right twin__panel--clip">
+            <div class="twin__slides">
+              <div class="slide slide--photo center photo-1">
+                <span class="slide-photo__label">Image 01</span>
+              </div>
+              <div class="slide slide--photo center photo-2">
+                <span class="slide-photo__label">Image 02</span>
+              </div>
+              <div class="slide slide--photo center photo-3">
+                <span class="slide-photo__label">Image 03</span>
+              </div>
+              <div class="slide slide--photo center photo-4">
+                <span class="slide-photo__label">Image 04</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
