@@ -59,7 +59,9 @@ pinSections.forEach((section, sectionIndex) => {
 
   const allSlides = [...slidesLeft, ...slidesRight];
   gsap.set(allSlides, { autoAlpha: 0 });
-  gsap.set([slidesLeft[0], slidesRight[0]], { autoAlpha: 1 });
+  gsap.set(slidesLeft[0], { autoAlpha: 1 });
+  gsap.set(slidesRight[0], { autoAlpha: 1, yPercent: 0 });
+  gsap.set(slidesRight.slice(1), { autoAlpha: 1, yPercent: 100 });
   gsap.set(stepBar, { x: 0 });
   setStep(0);
 
@@ -94,20 +96,23 @@ pinSections.forEach((section, sectionIndex) => {
   steps.forEach((_, j) => {
     if (j === 0) return;
 
+    // Right panel: next image slides up over the current one (clip reveal)
+    tl.fromTo(
+      slidesRight[j],
+      { autoAlpha: 1, yPercent: 100 },
+      { autoAlpha: 1, yPercent: 0, duration: 0.5, ease: "none" },
+      0.5 * j
+    );
+
+    // Left panel: simple crossfade as before
     tl.to(
-      [slidesLeft[j], slidesRight[j]],
-      {
-        autoAlpha: 1,
-        duration: 0.2
-      },
+      slidesLeft[j],
+      { autoAlpha: 1, duration: 0.25, ease: "none" },
       0.5 * j
     ).to(
-      [slidesLeft[j - 1], slidesRight[j - 1]],
-      {
-        autoAlpha: 0,
-        duration: 0.2
-      },
-      "<"
+      slidesLeft[j - 1],
+      { autoAlpha: 0, duration: 0.25, ease: "none" },
+      0.5 * j
     );
   });
 
