@@ -38,18 +38,13 @@ pinSections.forEach((section, sectionIndex) => {
 
   let tl;
 
-  /** Whole bar slips left as pinned section scroll progress goes 0 → 1 */
   function slipProgressBarToScroll() {
     if (!stepBar || !stepClip || !tl) return;
     const st = tl.scrollTrigger;
     if (!st) return;
     const p = st.progress;
     if (!Number.isFinite(p)) return;
-
-    const maxShift = Math.max(
-      0,
-      stepBar.offsetWidth - stepClip.clientWidth
-    );
+    const maxShift = Math.max(0, stepBar.offsetWidth - stepClip.clientWidth);
     gsap.set(stepBar, { x: -p * maxShift });
   }
 
@@ -85,7 +80,6 @@ pinSections.forEach((section, sectionIndex) => {
       id: sectionIndex + 1,
       onUpdate() {
         slipProgressBarToScroll();
-
         const t = tl.time();
         if (!Number.isFinite(t)) return;
         const step = stepIndexFromTime(t);
